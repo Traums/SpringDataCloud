@@ -1,0 +1,10 @@
+version: '3'
+
+services:
+  app:
+    build: .
+    network_mode: bridge
+    ports:
+      - "127.0.0.43:8080:8189"
+    environment:
+      SPRING_PROFILES_ACTIVE: docker
