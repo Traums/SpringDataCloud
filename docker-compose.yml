@@ -4,7 +4,7 @@ services:
   db:
     image: postgres:16
     ports:
-      - 5432:5432
+      - "127.0.0.43:5433:5432"
     environment: &db_envs
       POSTGRES_DB: int
       POSTGRES_USER: dummy
@@ -16,19 +16,19 @@ services:
     image: adminer
     restart: always
     ports:
-      - 8080:8080
+      - "8083:8080"
     depends_on:
       - db
 
   app:
     build: .
     ports:
-      - 8189:8189
+      - "8189:8189"
     depends_on:
       - db
     environment:
       <<: *db_envs
       POSTGRES_URL: jdbc:postgresql://db:5432/int
-
+      SPRING_PROFILES_ACTIVE: docker
 volumes:
   database:

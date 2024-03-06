@@ -13,9 +13,13 @@ COPY build.gradle settings.gradle gradlew $APP_HOME/
 COPY gradle $APP_HOME/gradle
 COPY src $APP_HOME/src
 
-RUN microdnf install findutils
-# Собираем проект с помощью Gradle
-RUN ./gradlew build
+RUN microdnf install findutils dos2unix
+
+# Преобразование символов окончания строки
+RUN dos2unix $APP_HOME/gradlew && chmod +x $APP_HOME/gradlew
+
+# Сборка проекта с помощью Gradle
+RUN $APP_HOME/gradlew build
 
 # Базовый образ для запуска Spring Boot
 FROM openjdk:17-jdk

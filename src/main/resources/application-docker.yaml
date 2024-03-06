@@ -1,0 +1,7 @@
+spring:
+  jpa:
+    show-sql: true
+  datasource:
+    username: ${POSTGRES_USER:postgres}
+    password: ${POSTGRES_PASSWORD:12345}
+    url: ${POSTGRES_URL:"jdbc:postgresql://localhost:5433/int"}
