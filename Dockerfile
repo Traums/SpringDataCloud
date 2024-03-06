@@ -23,7 +23,7 @@ FROM openjdk:17-jdk
 # Копирование JAR файла из предыдущего этапа сборки
 COPY --from=build /app/build/libs/SpringDataCloud-0.0.1-SNAPSHOT.jar /app/SpringDataCloud-0.0.1-SNAPSHOT.jar
 
-EXPOSE 8080
+EXPOSE 8189
 
 # Запуск приложения Spring Boot
 CMD ["java", "-jar", "/app/SpringDataCloud-0.0.1-SNAPSHOT.jar"]

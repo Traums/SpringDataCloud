@@ -2,9 +2,9 @@ spring:
   jpa:
     show-sql: true
   datasource:
-    username: postgres
-    password: 12345
-    url: jdbc:postgresql://localhost:5432/int
+    username: ${POSTGRES_USER:postgres}
+    password: ${POSTGRES_PASSWORD:12345}
+    url: ${POSTGRES_URL:"jdbc:postgresql://localhost:5432/int"}  
 
 server:
   port: 8189
